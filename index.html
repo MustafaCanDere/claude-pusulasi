@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Claude Pusulası</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F6F8; --surface:#FFFFFF; --ink:#16233D; --muted:#5A6780;
+  --line:#D7DEE6; --accent:#0E7C7B; --accent-ink:#FFFFFF; --mark:#F2B544; --soft:#E3F1F0;
+  color-scheme: light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1726; --surface:#172238; --ink:#E7EDF5; --muted:#9AA8BE;
+    --line:#2A3853; --accent:#3BBFB8; --accent-ink:#06201F; --mark:#F2B544; --soft:#173A3C;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1726; --surface:#172238; --ink:#E7EDF5; --muted:#9AA8BE;
+  --line:#2A3853; --accent:#3BBFB8; --accent-ink:#06201F; --mark:#F2B544; --soft:#173A3C;
+  color-scheme: dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:860px;margin:0 auto;padding:40px 20px 64px}
+h1{font-family:"Bricolage Grotesque","IBM Plex Sans",system-ui,sans-serif;font-weight:700;font-size:clamp(2rem,6vw,3.4rem);line-height:1.02;letter-spacing:-.02em;margin:0 0 12px}
+.lede{color:var(--muted);max-width:60ch;margin:0 0 28px}
+.ask{display:flex;gap:10px;flex-wrap:wrap}
+.ask input{flex:1 1 320px;min-width:0;font:inherit;font-size:1.15rem;padding:16px 18px;border:2px solid var(--ink);border-radius:14px;background:var(--surface);color:var(--ink)}
+.ask input:focus{outline:3px solid var(--mark);outline-offset:2px}
+button{font:inherit;cursor:pointer;border-radius:12px;border:0}
+button:focus-visible,a:focus-visible{outline:3px solid var(--mark);outline-offset:2px}
+.primary{background:var(--accent);color:var(--accent-ink);font-weight:600;padding:14px 20px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
+.chip{background:transparent;color:var(--ink);border:1px solid var(--line);padding:7px 13px;border-radius:999px;font-size:.92rem}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.result{margin-top:40px}
+.result h2{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:1.7rem;margin:0 0 4px;letter-spacing:-.01em}
+.result .why{color:var(--muted);margin:0 0 24px}
+.step{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:20px 0;border-top:1px solid var(--line)}
+.num{width:36px;height:36px;border-radius:50%;background:var(--mark);color:#1d1400;font-weight:700;display:grid;place-items:center;font-family:"Bricolage Grotesque",sans-serif}
+.step h3{margin:4px 0 10px;font-size:1.08rem}
+.items{display:flex;flex-direction:column;gap:10px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.item b{display:block}
+.item span{color:var(--muted);font-size:.93rem}
+.prompt{background:var(--soft);border-left:4px solid var(--accent);border-radius:10px;padding:16px;white-space:pre-wrap;font-size:.98rem;margin:0}
+.prompt mark{background:var(--mark);color:#1d1400;border-radius:4px;padding:0 3px}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.ghost{background:transparent;border:1px solid var(--ink);color:var(--ink);padding:10px 16px}
+.note{color:var(--muted);font-size:.9rem;margin-top:8px}
+.empty{color:var(--muted);margin-top:36px;padding:20px;border:1px dashed var(--line);border-radius:12px}
+.others{margin-top:28px;color:var(--muted);font-size:.95rem}
+.others button{background:none;color:var(--accent);text-decoration:underline;padding:0 4px;font-weight:600}
+.ai-out{margin-top:12px}
+footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+@media (prefers-reduced-motion:no-preference){.result{animation:in .35s ease-out}@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Ne yapmak istiyorsun?</h1>
+  <p class="lede">Hedefini yaz. Hangi skill’i açacağını, hangi uygulamayı bağlayacağını ve Claude’a ne yazacağını adım adım göstereyim.</p>
+
+  <div class="ask" role="search">
+    <input id="q" type="text" placeholder="ör. logomu döndüren bir animasyon" aria-label="Hedefin">
+    <button class="primary" id="go">Yolu göster</button>
+  </div>
+  <div class="chips" id="chips"></div>
+
+  <div id="out"></div>
+
+  <footer>Skill’ler ve bağlantılar (connector) Claude ayarlarından açılır. Bir öneri çalışmazsa Claude’a doğrudan “bunu yapmak için hangi aracı kullanmalıyım?” diye sorabilirsin.</footer>
+</div>
+
+<script>
+const CATALOG = [
+ {id:"animasyon", label:"Animasyon", keys:["animasyon","animation","hareket","gif","donen","kayan","efekt","intro","motion","canlandir"],
+  why:"Claude animasyonu kodla çizer: tarayıcıda oynayan HTML/CSS, p5.js ya da GIF olarak.",
+  use:[["Artifacts / Yayınlanan sayfa","Animasyonu canlı, paylaşılabilir bir sayfa olarak üretir."],["algorithmic-art skill’i","p5.js ile parçacık, akış, üretken sanat animasyonları."],["slack-gif-creator skill’i","Kısa, döngülü GIF’ler (Slack, WhatsApp, sunum için)."]],
+  connect:[["Canva","Animasyonu bir tasarıma, videoya ya da sosyal medya gönderisine çevirmek için."],["Figma","Arayüz animasyonları ve tasarım dosyaları için."]],
+  prompt:"Bana [konu: ör. logomun etrafında dönen parçacıklar] gösteren bir animasyon yap.\nStil: [renkler / minimal / neon / el çizimi]\nSüre ve döngü: [ör. 4 saniye, sonsuz döngü]\nFormat: [tarayıcıda oynayan HTML sayfa / GIF]\nEkran: [yatay 16:9 / dikey 9:16]\nÖnce kısa bir taslak yap, sonra ben düzeltme isteyeyim."},
+ {id:"sunum", label:"Sunum", keys:["sunum","slayt","slide","powerpoint","pptx","deck","prezentasyon","sunu"],
+  why:"Sunumları Claude doğrudan slayt olarak hazırlar; istersen PowerPoint olarak indirirsin.",
+  use:[["Slides / pptx skill’i","Düzenlenebilir slayt destesi ya da .pptx dosyası."]],
+  connect:[["Gamma","Tek promptla tasarımlı sunum üretmek için."],["Canva","Markana uygun şablonlarla."],["Google Drive","Mevcut dosyalarından içerik çekmek için."]],
+  prompt:"[Konu] hakkında [kaç] slaytlık bir sunum hazırla.\nDinleyici: [ör. öğretmenler / yatırımcılar / sınıf]\nAmaç: [bilgilendirmek / ikna etmek / satış]\nHer slaytta kısa başlık + en fazla 3 madde olsun.\nSon slaytta özet ve soru-cevap olsun."},
+ {id:"web", label:"Web sitesi / uygulama", keys:["site","web","uygulama","app","landing","sayfa","hesap makinesi","oyun","arayuz","ui"],
+  why:"Küçük araçları ve siteleri Claude tek dosya olarak yazıp yayınlayabilir; büyük projeler için Claude Code daha uygun.",
+  use:[["frontend-design skill’i","Şablon gibi durmayan, özgün tasarım."],["web-artifacts-builder skill’i","React ile çok parçalı uygulamalar."],["Claude Code","Gerçek bir proje klasöründe kod yazmak için."]],
+  connect:[["Lovable","Siteyi tam uygulamaya çevirip yayına almak için."],["Vercel","Yayınlama (deploy)."],["Supabase","Veritabanı ve kullanıcı girişi."]],
+  prompt:"[Ne işe yarayan] bir web [sitesi / aracı] yap.\nKimler kullanacak: [ör. lise öğrencileri]\nOlması gereken özellikler:\n- [özellik 1]\n- [özellik 2]\nTarz: [sade / renkli / koyu tema]\nTelefonda da düzgün görünsün."},
+ {id:"tablo", label:"Excel / tablo", keys:["excel","tablo","xlsx","hesap","formul","butce","grafik","veri","csv","sheets"],
+  why:"Claude formüllü, düzenli Excel dosyaları kurar ve verini temizler.",
+  use:[["xlsx skill’i","Formüller, grafikler, biçimlendirme."],["Claude in Excel","Doğrudan kendi Excel dosyanın içinde çalışır."]],
+  connect:[["Google Sheets","Google tablolarını okumak ve düzenlemek için."]],
+  prompt:"[Amaç: ör. aylık bütçe takibi] için bir Excel tablosu hazırla.\nSütunlar: [tarih, kategori, tutar…]\nOtomatik hesaplansın: [toplam, ortalama, kalan]\nBir de [çizgi / pasta] grafik ekle.\nÖrnek olarak 5 satır doldur."},
+ {id:"belge", label:"Belge / CV / rapor", keys:["belge","dokuman","word","docx","rapor","cv","ozgecmis","dilekce","mektup","pdf","odev","makale"],
+  why:"Uzun yazıları Claude düzenlenebilir belge olarak hazırlar; Word ya da PDF olarak indirebilirsin.",
+  use:[["docs skill’i","Paylaşılabilir, düzenlenebilir belge."],["docx / pdf skill’leri","Özellikle Word ya da PDF lazımsa."]],
+  connect:[["Google Drive","Eski belgelerinden bilgi almak için."],["Notion","Notlarından içerik çekmek ya da oraya kaydetmek için."]],
+  prompt:"Bana bir [CV / rapor / dilekçe] hazırla.\nKimin için: [ör. staj başvurusu, Mercedes]\nİçermesi gerekenler: [deneyim, beceriler…]\nUzunluk: [1 sayfa]\nTon: [resmi / samimi]\nEksik bilgi varsa önce bana sor."},
+ {id:"eposta", label:"E-posta", keys:["mail","eposta","e-posta","gmail","mesaj","cevap","yanit"],
+  why:"Claude e-postanı yazar; Gmail bağlıysa gelen kutundaki mesajı okuyup ona cevap hazırlar.",
+  use:[["Mesaj taslağı","Farklı tonlarda 2-3 alternatif."]],
+  connect:[["Gmail","Gelen kutusunu okumak ve taslak oluşturmak için (göndermeden önce sana sorar)."]],
+  prompt:"[Kime] bir e-posta yaz.\nAmacım: [ör. staj başvurumu takip etmek]\nTon: [kibar ama net]\nUzunluk: [kısa, 5-6 cümle]\nİki farklı versiyon ver."},
+ {id:"tasarim", label:"Poster / logo / tasarım", keys:["poster","logo","afis","tasarim","davetiye","kartvizit","gorsel","banner","instagram","design"],
+  why:"Afiş, davetiye, ekran tasarımı gibi şeyleri Claude düzenlenebilir bir tasarım olarak çizer.",
+  use:[["Design / canvas-design","Poster ve görsel tasarım."],["theme-factory skill’i","Hazır renk ve yazı temaları."]],
+  connect:[["Canva","Profesyonel şablonlar, baskıya hazır çıktı."],["Figma","Uygulama ekranı tasarımları."]],
+  prompt:"[Etkinlik / ürün] için bir [poster / logo / Instagram gönderisi] tasarla.\nYazılar: [başlık, tarih, yer]\nRenkler: [ör. lacivert ve sarı]\nHava: [ciddi / eğlenceli / teknolojik]\n3 farklı fikir göster, birini seçeyim."},
+ {id:"ses", label:"Seslendirme / ses", keys:["ses","seslendirme","voice","podcast","konusma","muzik","audio","dublaj"],
+  why:"Metni Claude yazar, ElevenLabs bağlıysa gerçekçi sese dönüştürür.",
+  use:[["Metin yazımı","Seslendirme metni, podcast senaryosu."]],
+  connect:[["ElevenLabs","Metinden ses, yeni ses tasarımı, sesli asistan."]],
+  prompt:"[Konu] hakkında [süre: ör. 60 saniyelik] bir seslendirme metni yaz.\nKonuşan: [genç erkek / kadın, enerjik]\nAmaç: [YouTube intro / reklam]\nSonra bu metni ElevenLabs ile seslendir."},
+ {id:"arastirma", label:"Araştırma", keys:["arastir","arastirma","karsilastir","bilgi","kaynak","rapor","pazar","haber","incele"],
+  why:"Claude internette arar, kaynakları karşılaştırır ve kaynaklı özet çıkarır.",
+  use:[["Web araması","Güncel bilgi için."],["Research (derin araştırma)","Onlarca kaynağı tarayıp uzun rapor."]],
+  connect:[["Notion","Bulguları not olarak kaydetmek için."]],
+  prompt:"[Konu] hakkında araştırma yap.\nÖzellikle bilmek istediklerim:\n- [soru 1]\n- [soru 2]\nGüncel kaynakları kullan ve her bilginin kaynağını göster.\nSonunda kısa bir özet ve önerin olsun."},
+ {id:"ogrenme", label:"Ders çalışma", keys:["ders","ogren","konu","sinav","yks","tyt","ayt","matematik","fizik","test","quiz","soru","calis"],
+  why:"Claude konuyu adım adım anlatır, hemen ardından soru sorar ve test hazırlar.",
+  use:[["learn skill’i","Konuyu basitten zora öğretir."],["Quiz / bilgi kartları","Etkileşimli test ve flashcard."]],
+  connect:[],
+  prompt:"Bana [konu: ör. türev] konusunu öğret.\nSeviyem: [başlangıç / orta]\nKısa anlat, her adımdan sonra 1 soru sor.\nSonunda [kaç] soruluk bir test hazırla ve yanlışlarımı açıkla."},
+ {id:"kod", label:"Kod / hata çözme", keys:["kod","code","hata","bug","python","javascript","program","script","github","yazilim","debug"],
+  why:"Kısa kodları sohbette, büyük projeleri Claude Code ile kendi bilgisayarında yaptırırsın.",
+  use:[["Claude Code","Proje klasöründe okur, yazar, test eder."],["Kod çalıştırma","Claude kodu kendi ortamında deneyebilir."]],
+  connect:[["Hugging Face","Yapay zekâ modelleri ve veri setleri bulmak için."],["Supabase","Veritabanı işleri için."]],
+  prompt:"[Dil] ile [ne yapan] bir kod yaz.\nGirdi: [ne alıyor]\nÇıktı: [ne veriyor]\nHer satırı kısaca açıkla.\nHata alırsam bu mesajı yapıştıracağım: [hata mesajı]"},
+ {id:"eticaret", label:"Online mağaza", keys:["magaza","shopify","urun","satis","e-ticaret","eticaret","odeme","stripe","dukkan"],
+  why:"Claude ürün açıklamalarını yazar; Shopify bağlıysa ürünü doğrudan mağazana ekler.",
+  use:[["Metin ve görsel önerileri","Ürün açıklaması, kampanya metni."]],
+  connect:[["Shopify","Ürün, koleksiyon, indirim kodu yönetimi."],["Stripe","Ödeme ve faturalar."]],
+  prompt:"[Ürün] için mağaza sayfası hazırla.\nHedef müşteri: [kimler]\nİçerik: başlık, 3 cümlelik açıklama, 5 özellik maddesi, fiyat önerisi.\nSonra bunu Shopify’da taslak ürün olarak oluştur."},
+ {id:"not", label:"Not / görev düzeni", keys:["not","gorev","plan","takvim","program","todo","notion","slack","organize","ajanda"],
+  why:"Claude planını çıkarır; Notion bağlıysa sayfa ve görev listesini oraya kurar.",
+  use:[["Planlama","Haftalık plan, hedef listesi."]],
+  connect:[["Notion","Sayfa, veritabanı, takvim."],["Slack","Ekip mesajları ve özetler."]],
+  prompt:"Bana [hedef: ör. 3 aylık sınav hazırlığı] için haftalık plan çıkar.\nGünde ayırabileceğim süre: [saat]\nÖncelikler: [ders / konu]\nPlanı Notion’da görev listesi olarak oluştur."},
+ {id:"roblox", label:"Roblox oyunu", keys:["roblox","luau","oyun","studio","obby"],
+  why:"Roblox Studio bağlıysa Claude oyununun içine doğrudan script ve obje ekler.",
+  use:[["Luau kod yazımı","Oyun mekanikleri, arayüz."]],
+  connect:[["Roblox Studio","Oyunun içinde script çalıştırma, model oluşturma."]],
+  prompt:"Roblox Studio’da [oyun türü: ör. obby] için [mekanik: ör. dönen platform] ekle.\nZorluk: [kolay]\nScript’i açıkla ve oyunu test et."}
+];
+
+const $ = s => document.querySelector(s);
+const norm = s => s.toLocaleLowerCase("tr").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/ı/g,"i");
+let sample = null;
+
+function score(text){
+  const t = norm(text);
+  return CATALOG.map(c => ({c, s: c.keys.reduce((a,k)=> a + (t.includes(norm(k)) ? (k.length>4?2:1) : 0), 0) + (t.includes(norm(c.label))?2:0)}))
+    .filter(x=>x.s>0).sort((a,b)=>b.s-a.s);
+}
+const esc = s => s.replace(/[&<>]/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[ch]));
+const hl = p => esc(p).replace(/\[([^\]]+)\]/g,"<mark>[$1]</mark>");
+const list = arr => arr.map(([n,d])=>`<div class="item"><b>${esc(n)}</b><span>${esc(d)}</span></div>`).join("");
+
+function render(c, others, userText){
+  let n = 1;
+  const steps = [];
+  steps.push(`<div class="step"><div class="num">${n++}</div><div><h3>Bunu kullan</h3><div class="items">${list(c.use)}</div></div></div>`);
+  if(c.connect.length) steps.push(`<div class="step"><div class="num">${n++}</div><div><h3>Bunu bağla (isteğe bağlı)</h3><div class="items">${list(c.connect)}</div></div></div>`);
+  steps.push(`<div class="step"><div class="num">${n++}</div><div><h3>Claude’a bunu yaz</h3>
+    <pre class="prompt" id="prompt">${hl(c.prompt)}</pre>
+    <p class="note">Sarı yerleri kendi bilgilerinle doldur.</p>
+    <div class="row"><button class="primary" id="copy">Prompt’u kopyala</button>${sample?`<button class="ghost" id="ai">Benim için doldur</button>`:""}</div>
+    <div class="ai-out" id="aiout"></div></div></div>`);
+  $("#out").innerHTML = `<section class="result" aria-live="polite"><h2>${esc(c.label)}</h2><p class="why">${esc(c.why)}</p>${steps.join("")}
+   ${others.length?`<p class="others">Şunlardan biri de olabilir:${others.map(o=>`<button data-id="${o.id}">${esc(o.label)}</button>`).join("")}</p>`:""}</section>`;
+  $("#copy").onclick = () => copyText(c.prompt, $("#copy"));
+  const ai = $("#ai"); if(ai) ai.onclick = () => fill(c, userText);
+  document.querySelectorAll(".others button").forEach(b => b.onclick = () => pick(b.dataset.id));
+  document.querySelectorAll(".chip").forEach(ch => ch.setAttribute("aria-pressed", ch.dataset.id===c.id));
+}
+
+async function copyText(text, btn){
+  try { await navigator.clipboard.writeText(text); btn.textContent="Kopyalandı"; }
+  catch { const r=document.createRange(); r.selectNodeContents($("#prompt")); const s=getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent="Seçildi, Ctrl+C ile kopyala"; }
+  setTimeout(()=>btn.textContent="Prompt’u kopyala",2200);
+}
+
+async function fill(c, userText){
+  const box = $("#aiout"), btn = $("#ai");
+  btn.disabled = true; box.innerHTML = `<p class="note">Hazırlanıyor…</p>`;
+  const instr = `Sen kullanıcıların Claude'a iyi prompt yazmasına yardım eden bir asistansın. Türkçe yaz.
+Kullanıcının hedefi: "${userText || c.label}"
+Şablon:
+${c.prompt}
+Görev: Şablondaki [köşeli parantezli] yerleri kullanıcının hedefine uygun, mantıklı örneklerle doldur. Hedefte olmayan bilgiler için makul varsayım yap. Sadece doldurulmuş prompt'u yaz, başka açıklama ekleme, köşeli parantez kullanma.`;
+  try {
+    const res = await sample(instr, { modelTier:"quick", onText:({text}) => { box.innerHTML = `<pre class="prompt">${esc(text)}</pre>`; } });
+    const final = res.text.trim();
+    box.innerHTML = `<pre class="prompt" id="filled">${esc(final)}</pre><div class="row"><button class="ghost" id="copy2">Bunu kopyala</button></div>`;
+    $("#copy2").onclick = async (e) => { try{ await navigator.clipboard.writeText(final); e.target.textContent="Kopyalandı"; }catch{ e.target.textContent="Metni seçip kopyala"; } };
+  } catch(err){
+    box.innerHTML = err && err.code==="not_granted" ? `<p class="note">Bu özellik için izin verilmedi. Şablonu elle doldurabilirsin.</p>`
+      : err && err.code==="rate_limited" ? `<p class="note">Çok fazla istek gitti. Biraz bekleyip tekrar dene.</p>`
+      : `<p class="note">Prompt hazırlanamadı. Şablonu elle doldurabilirsin.</p>`;
+  } finally { btn.disabled = false; }
+}
+
+function pick(id, text){ const c = CATALOG.find(x=>x.id===id); render(c, [], text||""); }
+
+function search(){
+  const text = $("#q").value.trim();
+  if(!text){ $("#out").innerHTML = `<p class="empty">Bir hedef yaz ya da yukarıdaki konulardan birini seç.</p>`; return; }
+  const r = score(text);
+  if(!r.length){ $("#out").innerHTML = `<p class="empty">Bunu tanıyamadım. Daha basit yazmayı dene (ör. “sunum”, “animasyon”, “excel”) ya da bir konu seç.</p>`; return; }
+  render(r[0].c, r.slice(1,4).map(x=>x.c), text);
+}
+
+$("#chips").innerHTML = CATALOG.map(c=>`<button class="chip" data-id="${c.id}" aria-pressed="false">${esc(c.label)}</button>`).join("");
+document.querySelectorAll(".chip").forEach(ch => ch.onclick = () => pick(ch.dataset.id));
+$("#go").onclick = search;
+$("#q").addEventListener("keydown", e => { if(e.key==="Enter") search(); });
+
+(async () => {
+  try { if(window.claude && claude.use){ sample = await claude.use("sample"); } } catch { sample = null; }
+})();
+</script>
+</body>
+</html>
