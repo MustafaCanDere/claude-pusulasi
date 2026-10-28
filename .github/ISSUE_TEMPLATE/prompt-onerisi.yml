@@ -1,0 +1,64 @@
+name: Prompt önerisi / Prompt suggestion
+description: İşe yarayan bir prompt'unu paylaş; onaylanırsa sitede "Topluluk prompt'ları" bölümünde görünür.
+title: "[Konu] "
+labels: ["prompt"]
+body:
+  - type: dropdown
+    id: cat
+    attributes:
+      label: Konu / Topic
+      options:
+        - Animasyon
+        - Video oluşturma
+        - Sunum
+        - Web sitesi / uygulama
+        - Excel / tablo
+        - Belge / CV / rapor
+        - İş başvurusu / mülakat
+        - E-posta
+        - Poster / logo / görsel
+        - Sosyal medya / YouTube
+        - Seslendirme / ses
+        - Çeviri
+        - Araştırma
+        - Ders çalışma
+        - Soru çözümü / ödev kontrolü
+        - Kod / hata çözme
+        - Online mağaza
+        - Not / görev düzeni
+        - Roblox oyunu
+    validations:
+      required: true
+  - type: dropdown
+    id: ai
+    attributes:
+      label: Hangi yapay zekâda denedin? / Which AI did you use?
+      options: [Hepsi / All, Claude, ChatGPT, Gemini, Grok, Codex, Antigravity]
+    validations:
+      required: true
+  - type: dropdown
+    id: lang
+    attributes:
+      label: Dil / Language
+      options: [Türkçe, English]
+    validations:
+      required: true
+  - type: input
+    id: title
+    attributes:
+      label: Kısa başlık / Short title
+      placeholder: "ör. 60 saniyelik YouTube Shorts senaryosu"
+    validations:
+      required: true
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Prompt
+      description: Doldurulacak yerleri [köşeli parantez] içine yaz. Kişisel bilgi (isim, telefon, şifre) ekleme.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Neden işe yarıyor? / Why does it work? (isteğe bağlı)

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Pusulası</title>
+<meta name="description" content="Ne yapmak istediğini yaz; Claude, ChatGPT, Gemini, Grok, Codex veya Antigravity'de hangi özelliği kullanacağını ve ne yazacağını göstersin.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="lang" id="lang" role="group">
+      <button data-lang="tr" aria-pressed="true">TR</button>
+      <button data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+
+  <h1 id="title">Ne yapmak istiyorsun?</h1>
+  <p class="lede" id="lede"></p>
+  <ol class="intro" id="intro"></ol>
+
+  <p class="ais-label" id="ais-label"></p>
+  <div class="ais" id="ais" role="group" aria-labelledby="ais-label"></div>
+
+  <div class="ask" role="search">
+    <input id="q" type="text">
+    <button class="primary" id="go"></button>
+  </div>
+  <div class="chips" id="chips"></div>
+
+  <div id="out"></div>
+
+  <section class="box" id="check">
+    <h2 id="check-title"></h2>
+    <p id="check-lede"></p>
+    <textarea id="check-in"></textarea>
+    <div class="row"><button class="primary" id="check-btn"></button></div>
+    <div id="check-out" aria-live="polite"></div>
+  </section>
+
+  <section class="box">
+    <h2 id="saved-title"></h2>
+    <div class="items" id="saved-list"></div>
+  </section>
+
+  <section class="box" id="tips" aria-live="polite"></section>
+
+  <footer id="footer"></footer>
+</div>
+
+<script src="data/tr.js"></script>
+<script src="data/en.js"></script>
+<script src="data/community.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
