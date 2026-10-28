@@ -9,24 +9,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#F3F6F8; --surface:#FFFFFF; --ink:#16233D; --muted:#5A6780;
-  --line:#D7DEE6; --accent:#0E7C7B; --accent-ink:#FFFFFF; --mark:#F2B544; --soft:#E3F1F0;
+  --bg:#FFFFFF; --surface:#FFFFFF; --ink:#16233D; --muted:#5A6780;
+  --line:#E1E6EC; --accent:#0E7C7B; --accent-ink:#FFFFFF; --mark:#F2B544; --soft:#F3F9F9;
   color-scheme: light;
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#0F1726; --surface:#172238; --ink:#E7EDF5; --muted:#9AA8BE;
-    --line:#2A3853; --accent:#3BBFB8; --accent-ink:#06201F; --mark:#F2B544; --soft:#173A3C;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#0F1726; --surface:#172238; --ink:#E7EDF5; --muted:#9AA8BE;
-  --line:#2A3853; --accent:#3BBFB8; --accent-ink:#06201F; --mark:#F2B544; --soft:#173A3C;
-  color-scheme: dark;
 }
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *,*::before,*::after{box-sizing:border-box}
@@ -35,11 +23,11 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "IBM Plex San
 h1{font-family:"Bricolage Grotesque","IBM Plex Sans",system-ui,sans-serif;font-weight:700;font-size:clamp(2rem,6vw,3.4rem);line-height:1.02;letter-spacing:-.02em;margin:0 0 12px}
 .lede{color:var(--muted);max-width:60ch;margin:0 0 22px}
 .ais-label{font-weight:600;margin:0 0 8px}
-.ais{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 22px;padding:5px;background:var(--surface);border:1px solid var(--line);border-radius:14px;width:fit-content;max-width:100%}
+.ais{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 22px;padding:5px;background:#F6F8FA;border:1px solid var(--line);border-radius:14px;width:fit-content;max-width:100%}
 .ai{background:transparent;color:var(--ink);padding:9px 14px;border-radius:10px;font-weight:500}
 .ai small{display:block;font-size:.72rem;color:var(--muted);font-weight:400;line-height:1.1}
-.ai[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
-.ai[aria-pressed="true"] small{color:var(--bg);opacity:.75}
+.ai[aria-pressed="true"]{background:var(--ink);color:#FFFFFF}
+.ai[aria-pressed="true"] small{color:#FFFFFF;opacity:.75}
 .ask{display:flex;gap:10px;flex-wrap:wrap}
 .ask input{flex:1 1 300px;min-width:0;font:inherit;font-size:1.15rem;padding:16px 18px;border:2px solid var(--ink);border-radius:14px;background:var(--surface);color:var(--ink)}
 .ask input:focus{outline:3px solid var(--mark);outline-offset:2px}
@@ -48,7 +36,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--mark);outline-offse
 .primary{background:var(--accent);color:var(--accent-ink);font-weight:600;padding:14px 20px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
 .chip{background:transparent;color:var(--ink);border:1px solid var(--line);padding:7px 13px;border-radius:999px;font-size:.92rem}
-.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:#FFFFFF;border-color:var(--ink)}
 .chip.off{opacity:.45}
 .result{margin-top:40px}
 .result h2{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:1.7rem;margin:0 0 4px;letter-spacing:-.01em}
@@ -70,10 +58,24 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--mark);outline-offse
 .others{margin-top:28px;color:var(--muted);font-size:.95rem}
 .others button{background:none;color:var(--accent);text-decoration:underline;padding:0 4px;font-weight:600}
 .ai-out{margin-top:12px}
-.tips{margin-top:48px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.tips{margin-top:48px;background:#F6F8FA;border:1px solid var(--line);border-radius:14px;padding:20px 22px}
 .tips h2{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:1.3rem;margin:0 0 10px}
 .tips ul{margin:0;padding-left:20px}
 .tips li{margin:6px 0}
+.how{margin:0;padding-left:20px}
+.how li{margin:6px 0}
+.follow{display:flex;flex-direction:column;gap:8px}
+.follow button{text-align:left;background:#F6F8FA;border:1px solid var(--line);color:var(--ink);padding:10px 14px;border-radius:10px}
+.follow button:hover{border-color:var(--accent)}
+.warn{background:#FFF7E6;border:1px solid #F3D9A4;border-radius:12px;padding:12px 14px;margin-top:4px}
+.intro{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 28px;padding:0;list-style:none}
+.intro li{border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:var(--muted);font-size:.95rem}
+.intro b{display:block;color:var(--ink)}
+@media (max-width:720px){.intro{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:420px){.intro{grid-template-columns:1fr}}
+.follow mark{background:var(--mark);color:#1d1400;border-radius:4px;padding:0 3px}
+.tips li b{display:block}
+.tips li span{color:var(--muted)}
 footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
 @media (prefers-reduced-motion:no-preference){.result{animation:in .35s ease-out}@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}}
 </style>
@@ -82,6 +84,13 @@ footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:v
 <div class="wrap">
   <h1>Ne yapmak istiyorsun?</h1>
   <p class="lede">Yapay zekânı seç, hedefini yaz. Hangi özelliği açacağını, neyi bağlayacağını ve ne yazacağını adım adım göstereyim.</p>
+
+  <ol class="intro">
+    <li><b>1. Yapay zekânı seç</b>Kullandığın aracı aşağıdan seç.</li>
+    <li><b>2. Hedefini yaz</b>Ne yapmak istediğini kendi cümlenle yaz ya da bir konuya tıkla.</li>
+    <li><b>3. Adımları izle</b>Nasıl açacağını, hangi özelliği seçeceğini ve ne yazacağını gör.</li>
+    <li><b>4. Kopyala, yapıştır</b>Hazır prompt’u doldur, yapıştır, sonra önerilen isteklerle geliştir.</li>
+  </ol>
 
   <p class="ais-label" id="ais-label">Hangi yapay zekâyı kullanıyorsun?</p>
   <div class="ais" id="ais" role="group" aria-labelledby="ais-label"></div>
@@ -103,41 +112,59 @@ footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:v
 /* ---------- Asistanlar ---------- */
 const AIS = {
   claude: {name:"Claude", sub:"Anthropic", kind:"chat",
+    start:["claude.ai adresine gir ya da Claude uygulamasını aç ve hesabınla giriş yap.","Yeni sohbet başlat. Dosyan varsa mesaj kutusundaki ataş simgesiyle ekle.","Bir uygulama bağlayacaksan Ayarlar’daki bağlantılar (connector) bölümünden bağla; skill’leri de Ayarlar’dan açabilirsin.","Aşağıdaki prompt’u yapıştır ve gönder."],
     tips:[
-      "Dosyanı (PDF, Excel, resim) doğrudan ekle, metni kopyalamana gerek yok.",
-      "Ayarlardan skill’leri ve bağlantıları (Gmail, Notion, Canva…) açarsan Claude onları kendisi kullanır.",
-      "Uzun işlerde “önce kısa bir taslak yap” de, sonra adım adım düzelt.",
-      "Projects ile dosyalarını ve talimatlarını bir projede toplayabilirsin."]},
+      ["Dosyanı doğrudan ekle","PDF, Excel, Word ya da resim yükle. Metni kopyala-yapıştır yapmana gerek yok; Claude dosyayı kendisi okur."],
+      ["Skill’leri aç","Excel, PowerPoint, GIF, p5.js gibi skill’ler Claude’a o işi nasıl iyi yapacağını öğretir. Açık olanları Claude gerektiğinde kendisi kullanır."],
+      ["Uygulamalarını bağla","Gmail, Google Drive, Notion, Canva bağlıysa Claude doğrudan oradaki bilgilerle çalışır. Mail göndermek gibi önemli işlerden önce sana sorar."],
+      ["Önce taslak iste","“Önce kısa bir taslak yap” de, sonra adım adım düzelt. Her seferinde baştan anlatmana gerek yok."],
+      ["Projects kullan","Sürekli aynı konuda çalışıyorsan dosyalarını ve talimatlarını bir projede topla; her sohbette tekrar anlatmazsın."],
+      ["Büyük kod işleri için Claude Code","Gerçek bir yazılım projesinde Claude Code dosyaları okur, yazar ve test eder."]]},
   chatgpt: {name:"ChatGPT", sub:"OpenAI", kind:"chat",
+    start:["chatgpt.com adresine gir ya da ChatGPT uygulamasını aç ve giriş yap.","Yeni sohbet başlat. Dosyan varsa + simgesiyle ekle.","Canvas, Deep Research ya da görsel oluşturma gibi bir özellik lazımsa mesaj kutusundaki araçlar (+) menüsünden seç.","Aşağıdaki prompt’u yapıştır ve gönder."],
     tips:[
-      "Uzun yazı ve kodda Canvas’ı aç: metni tek yerde düzeltirsin.",
-      "Güncel bilgi için web aramasını, kapsamlı rapor için Deep Research’ü kullan.",
-      "Projects ile dosyalarını ve sohbetlerini tek bir projede toplayabilirsin.",
-      "Apps ve bağlantılar (Canva, Google Takvim…) bağlarsan ChatGPT onlarla çalışır."]},
+      ["Canvas’ı aç","Uzun yazı ve kodda Canvas’ı seç. Metin ayrı bir pencerede açılır; bir kısmını seçip sadece onu düzelttirebilirsin."],
+      ["Doğru araştırma aracını seç","Hızlı ve güncel bilgi için web araması yeterli. Kapsamlı, kaynaklı bir rapor için Deep Research’ü seç; birkaç dakika sürer."],
+      ["Dosya iste","“.xlsx / .pptx / .docx olarak ver” dersen indirilebilir dosya hazırlar."],
+      ["Projects ve Tasks","Projects ile dosyalarını ve sohbetlerini bir arada tut. Tasks ile hatırlatıcı ve tekrar eden işler kur."],
+      ["Apps ve bağlantılar","Canva gibi uygulamaları ChatGPT içinden kullanabilir, Google Takvim gibi hesapları bağlayabilirsin."],
+      ["Kod projeleri için Codex","Gerçek bir yazılım projesinde Codex’e geç; dosyaları kendisi düzenler."]]},
   gemini: {name:"Gemini", sub:"Google", kind:"chat",
+    start:["gemini.google.com adresine gir ya da Gemini uygulamasını aç ve Google hesabınla giriş yap.","Yeni sohbet başlat. Dosyan varsa + simgesiyle ekle (Google Drive’dan da seçebilirsin).","Canvas, Deep Research, görsel ya da video gibi bir özellik lazımsa mesaj kutusunun altındaki araçlardan seç.","Aşağıdaki prompt’u yapıştır ve gönder."],
     tips:[
-      "Sık yaptığın işler için bir Gem oluştur; talimatı her seferinde yazmazsın.",
-      "Canvas ile uygulama, oyun ve sayfa prototipleri hazırlatabilirsin.",
-      "Google uygulamalarını (Gmail, Takvim, Fotoğraflar) bağlarsan kendi verinle çalışır.",
-      "Kapsamlı rapor için Deep Research’ü seç."]},
+      ["Gem oluştur","Sık yaptığın işler için kendi asistanını yap (ör. “YKS matematik koçu”). Talimatı bir kere yazarsın, her seferinde hazır olur."],
+      ["Canvas ile prototip","Uygulama, oyun ve web sayfasını Canvas’ta çalışır halde görebilir, sonra Google Dokümanlar’a aktarabilirsin."],
+      ["Nano Banana ile görsel","Görsel üretir ve yüklediğin fotoğrafı düzenler. Görsel üstüne Türkçe yazıda da başarılıdır."],
+      ["Google uygulamalarını bağla","Gmail, Takvim, Drive bağlıysa kendi verinle çalışır: “bu haftaki maillerimi özetle” gibi."],
+      ["NotebookLM","Kendi ders notlarını yükle; sadece onlardan özet, test ve sesli özet çıkarır."],
+      ["Kod projeleri için Antigravity","Gerçek yazılım projelerinde Google’ın kod aracı Antigravity’yi kullan."]]},
   grok: {name:"Grok", sub:"xAI", kind:"chat",
+    start:["grok.com adresine gir, Grok uygulamasını ya da X içindeki Grok’u aç.","Yeni sohbet başlat. Dosyan varsa ataş simgesiyle ekle.","Araştırma için DeepSearch’ü, zor sorular için Think modunu, görsel/video için Imagine’i seç.","Aşağıdaki prompt’u yapıştır ve gönder."],
     tips:[
-      "Gündem ve son dakika için DeepSearch kullan; X’teki gönderileri de tarar.",
-      "Zor sorularda Think modunu aç, ama önemli bilgileri yine de kontrol et.",
-      "Görsel ve video için Grok Imagine’i kullan.",
-      "Projects ile dosyalarını ve talimatlarını bir arada tut."]},
+      ["Gündem için DeepSearch","Hem web’i hem X’teki gönderileri tarar. Son dakika ve “insanlar ne diyor” soruları için en güçlü seçenek."],
+      ["Think modu","Matematik ve mantık sorularında adım adım düşünür. Yine de önemli bilgileri kontrol et."],
+      ["Grok Imagine","Yazıdan ya da görselden görsel ve sesli kısa video üretir."],
+      ["Projects","Dosyalarını ve talimatlarını bir projede tut, her sohbette tekrar anlatma."],
+      ["Dosya üretmez, metin hazırlar","Sunum gibi dosyaları kendisi üretmez. Metni Grok’a yazdır, sonra Gamma ya da Canva’da tasarla."],
+      ["Kaynak iste","“Her bilginin kaynağını göster” dersen bilgileri kontrol etmek kolaylaşır."]]},
   codex: {name:"Codex", sub:"OpenAI · kod", kind:"code",
+    start:["Codex uygulamasını, VS Code eklentisini ya da terminaldeki Codex CLI’ı aç ve ChatGPT hesabınla giriş yap.","Çalışacağın proje klasörünü seç (yeni proje için boş bir klasör aç).","Proje kök klasörüne bir AGENTS.md dosyası ekle: projenin ne olduğunu, kurallarını ve test komutlarını yaz.","Aşağıdaki prompt’u yapıştır, Codex’in planını oku ve onayla."],
     tips:[
-      "Proje klasörüne bir AGENTS.md dosyası koy: kurallarını ve komutlarını oraya yaz, Codex her seferinde okur.",
-      "Başta onay modunu açık tut; Codex komut çalıştırmadan önce sana sorsun.",
-      "İş bitince /review ile değişiklikleri incelet.",
-      "Büyük işleri küçük parçalara böl, her parçadan sonra test ettir."]},
+      ["AGENTS.md yaz","Projenin kurallarını, klasör yapısını, çalıştırma ve test komutlarını bu dosyaya yaz. Codex her görevde okur."],
+      ["Onay modunu açık tut","Başta Codex’in komut çalıştırmadan önce sana sormasını sağla. Projeyi tanıdıkça serbest bırakırsın."],
+      ["İşi parçala","“Bütün uygulamayı yap” yerine “önce giriş sayfasını yap, sonra test et” gibi küçük görevler ver."],
+      ["/review","İş bitince değişiklikleri incelet. Gözden kaçan hataları yakalar."],
+      ["Git kullan","Her görevden önce commit at. Bir şey bozulursa kolayca geri dönersin."],
+      ["MCP ile araç bağla","GitHub, Figma gibi araçları bağlarsan Codex onlarla da çalışır."]]},
   antigravity: {name:"Antigravity", sub:"Google · kod", kind:"code",
+    start:["Antigravity’yi indirip kur, Google hesabınla giriş yap.","Proje klasörünü aç (yeni proje için boş bir klasör).","Agent Manager’da yeni bir görev başlat.","Aşağıdaki prompt’u yapıştır. Ajan önce bir Implementation Plan yazar; oku, gerekirse yorum yazarak düzelt, sonra onayla."],
     tips:[
-      "Ajanın çıkardığı uygulama planını (Implementation Plan) okumadan onaylama; yorum yazarak düzelt.",
-      "Agent Manager’da birden fazla görevi paralel çalıştırabilirsin.",
-      "Web projelerinde ajandan tarayıcıda açıp test etmesini ve ekran görüntüsü almasını iste.",
-      "İşin sonunda Walkthrough’a bak: neyin değiştiğini özetler."]}
+      ["Planı oku","Ajan koda başlamadan plan yazar. Okumadan onaylama; yanlış bir şey varsa plana yorum yaz."],
+      ["Paralel görevler","Agent Manager’da birden fazla görevi aynı anda çalıştırabilirsin (ör. biri arayüz, biri testler)."],
+      ["Tarayıcıda test ettir","Web projelerinde “tarayıcıda açıp test et ve ekran görüntüsü al” de. Ajan siteyi açıp tıklayarak dener."],
+      ["Walkthrough’a bak","İş bitince neyin değiştiğini, hangi dosyalara dokunulduğunu ve ekran görüntülerini özetler."],
+      ["Git kullan","Her görevden önce commit at; beğenmezsen geri dönersin."],
+      ["Gerektiğinde müdahale et","Editor’de koda kendin de girip düzeltebilirsin; ajan kaldığı yerden devam eder."]]}
 };
 
 /* ---------- Konular (her asistanda ortak) ---------- */
@@ -171,6 +198,25 @@ const CATS = [
  {id:"roblox", label:"Roblox oyunu", keys:["roblox","luau","studio","obby"],
   prompt:"Roblox Studio için [oyun türü: ör. obby] oyununa [mekanik: ör. dönen platform] ekleyen bir Luau script’i yaz.\nZorluk: [kolay]\nScript’i nereye koyacağımı (ServerScriptService / StarterPlayer…) ve nasıl test edeceğimi adım adım anlat."}
 ];
+
+
+/* ---------- Konu detayları: ilk sonuçtan sonra ne istenir, nelere dikkat edilir ---------- */
+const DETAIL = {
+ animasyon:{follow:["Daha yavaş ve yumuşak hareket etsin.","Renkleri [renk] yap ve arka planı değiştir.","Bunu GIF / video olarak indirilebilir hale getir."],avoid:"Tek seferde çok fazla efekt isteme. Önce basit bir hareket yaptır, sonra adım adım ekle."},
+ sunum:{follow:["Her slayta konuşmacı notu ekle.","3. slaytı daha görsel yap, maddeleri azalt.","Sunumu [kaç] dakikalık konuşmaya göre kısalt."],avoid:"Slaytlara paragraf koyma. Slaytta kısa madde, ayrıntı konuşmacı notunda olsun."},
+ web:{follow:["Telefonda nasıl göründüğünü düzelt.","Bir [özellik] daha ekle.","Kodu nasıl yayına alacağımı (ör. GitHub Pages) adım adım anlat."],avoid:"Bütün özellikleri tek seferde isteme. Önce çalışan basit bir sürüm, sonra özellik ekle."},
+ tablo:{follow:["Formülleri açıkla, hangi hücrede ne hesaplanıyor?","Bir sütun daha ekle: [sütun].","Grafiği [çizgi / pasta] olarak değiştir."],avoid:"Gerçek verilerinde formülleri birkaç satırda elle kontrol et."},
+ belge:{follow:["Daha kısa ve net yaz.","Tonu daha resmi yap.","Bunu Word / PDF olarak ver."],avoid:"Kişisel bilgilerini (TC no, adres) gerekmedikçe yazma. CV’deki her bilginin doğru olduğundan emin ol."},
+ eposta:{follow:["Daha kısa yap.","Daha kibar / daha net yap.","Konu satırı için 3 öneri ver."],avoid:"Göndermeden önce isimleri, tarihleri ve ekleri mutlaka kendin kontrol et."},
+ tasarim:{follow:["Yazıyı daha büyük ve okunur yap.","Aynı tasarımı Instagram hikâyesi (9:16) boyutunda yap.","Renkleri [renk] olarak değiştir."],avoid:"Görsel üretimde yazılar bazen bozuk çıkabilir; yazıları mutlaka kontrol et. Başkasının logosunu ya da karakterini kopyalatma."},
+ ses:{follow:["Metni 30 saniyeye kısalt.","Daha enerjik / daha sakin bir ton yaz.","Vurgulanacak kelimeleri işaretle."],avoid:"Gerçek bir kişinin sesini izinsiz taklit ettirme."},
+ arastirma:{follow:["Bulguları tablo halinde karşılaştır.","En güvenilir 3 kaynağı ayrıca göster.","Farklı görüşleri ayrı başlıkta yaz."],avoid:"Kaynaksız bilgiye güvenme. Önemli sayıları ve tarihleri kaynağından kontrol et."},
+ ogrenme:{follow:["Bir örnek soru daha ver, bu sefer daha zor olsun.","Yanlış yaptığım yeri tekrar anlat.","Bu konudan 10 soruluk mini deneme hazırla."],avoid:"Cevapları direkt kopyalama. Önce kendin çöz, sonra yapay zekâya kontrol ettir."},
+ kod:{follow:["Bu kodu daha okunur hale getir.","Hata durumlarını da ele al.","Bunun için test yaz."],avoid:"Anlamadığın kodu çalıştırma. API anahtarı ya da şifreni prompt’a yapıştırma."},
+ eticaret:{follow:["Açıklamayı SEO uyumlu yap.","3 farklı kampanya metni yaz.","Ürün için sık sorulan sorular hazırla."],avoid:"Ürün özelliklerini abartma; yanlış bilgi iade ve şikâyet getirir."},
+ not:{follow:["Planı daha gerçekçi yap, günde [saat] saatim var.","Haftalık tekrar günleri ekle.","Bunu kontrol listesi (checklist) yap."],avoid:"İlk hafta çok yüklenme. Uygulayabileceğin bir plan, mükemmel plandan iyidir."},
+ roblox:{follow:["Script’e açıklama satırları ekle.","Hata veriyor, bu çıktıyı incele: [hata].","Bir mekanik daha ekle: [mekanik]."],avoid:"Toolbox’tan aldığın hazır script’leri kontrol etmeden kullanma; içinde zararlı kod olabilir."}
+};
 
 /* Kod ajanları için ortak prompt kalıbı */
 const CODE_PROMPT = (what) => `Bu proje klasöründe ${what}.\nTeknoloji: [ör. HTML/CSS/JS, React, Python]\nOlması gerekenler:\n- [özellik 1]\n- [özellik 2]\nÖnce kısa bir plan çıkar ve onayımı bekle.\nBitirince nasıl çalıştırıp test edeceğimi yaz.`;
@@ -425,7 +471,7 @@ function renderChips(){
 }
 function renderTips(){
   const a = AIS[current];
-  $("#tips").innerHTML = `<h2>${esc(a.name)} için püf noktaları</h2><ul>${a.tips.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>`;
+  $("#tips").innerHTML = `<h2>${esc(a.name)} için püf noktaları</h2><ul>${a.tips.map(([t,d])=>`<li><b>${esc(t)}</b><span>${esc(d)}</span></li>`).join("")}</ul>`;
 }
 function setAi(id){
   current = id; store.set("pusula-ai", id);
@@ -452,6 +498,7 @@ function render(catId, othersIds, userText){
   }
   const p = promptFor(cat, e);
   let n = 1; const steps = [];
+  steps.push(`<div class="step"><div class="num">${n++}</div><div><h3>Aç ve hazırla</h3><ol class="how">${a.start.map(x=>`<li>${esc(x)}</li>`).join("")}</ol></div></div>`);
   steps.push(`<div class="step"><div class="num">${n++}</div><div><h3>Bunu kullan</h3><div class="items">${list(e.use)}</div></div></div>`);
   if(e.connect && e.connect.length) steps.push(`<div class="step"><div class="num">${n++}</div><div><h3>Bunu bağla (isteğe bağlı)</h3><div class="items">${list(e.connect)}</div></div></div>`);
   steps.push(`<div class="step"><div class="num">${n++}</div><div><h3>Bunu kopyalayıp yapıştır</h3>
@@ -459,11 +506,23 @@ function render(catId, othersIds, userText){
     <p class="note">Sarı yerleri kendi bilgilerinle doldur.</p>
     <div class="row"><button class="primary" id="copy">Prompt’u kopyala</button>${sample?`<button class="ghost" id="fill">Benim için doldur</button>`:""}</div>
     <div class="ai-out" id="aiout"></div></div></div>`);
+  const d = DETAIL[catId];
+  if(d){
+    steps.push(`<div class="step"><div class="num">${n++}</div><div><h3>İlk sonuçtan sonra bunları iste</h3>
+      <p class="note" style="margin-top:0">Sonuç ilk seferde mükemmel olmayabilir, bu normal. Aynı sohbette şu isteklerle geliştir (tıklayınca kopyalanır):</p>
+      <div class="follow">${d.follow.map(f=>`<button data-copy="${esc(f)}">${hl(f)}</button>`).join("")}</div></div></div>`);
+    steps.push(`<div class="step"><div class="num">!</div><div><h3>Dikkat</h3><div class="warn">${esc(d.avoid)}</div></div></div>`);
+  }
   const others = (othersIds||[]).filter(id => MAP[current][id]);
   $("#out").innerHTML = `<section class="result" aria-live="polite"><h2>${esc(cat.label)} · ${esc(a.name)}</h2><p class="why">${esc(e.why)}</p>${steps.join("")}
    ${others.length?`<p class="others">Şunlardan biri de olabilir:${others.map(id=>`<button data-id="${id}">${esc(CATS.find(c=>c.id===id).label)}</button>`).join("")}</p>`:""}</section>`;
   $("#copy").onclick = () => copyText(p, $("#copy"), "Prompt’u kopyala");
   const f = $("#fill"); if(f) f.onclick = () => fill(p, cat, userText);
+  document.querySelectorAll("[data-copy]").forEach(b => b.onclick = async () => {
+    const t = b.dataset.copy, old = b.innerHTML;
+    try { await navigator.clipboard.writeText(t); b.textContent = "Kopyalandı ✓"; } catch { b.textContent = t; }
+    setTimeout(() => b.innerHTML = old, 1600);
+  });
   document.querySelectorAll(".others button").forEach(b => b.onclick = () => pick(b.dataset.id));
 }
 
