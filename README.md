@@ -1,27 +1,94 @@
-# 🧭 Claude Pusulası
+# 🧭 AI Pusulası
 
 ## Nasıl kullanılır?
 
-1. **Hedefini yaz.** Örneğin: `logomu döndüren bir animasyon`, `staj için CV`, `türev konusunu öğren`.
+1. **Yapay zekânı seç.** Claude, ChatGPT, Gemini, Grok, Codex ya da Antigravity.
+2. **Hedefini yaz.** Örneğin: `logomu döndüren bir animasyon`, `staj için CV`, `türev konusunu öğren`.
    Ya da hazır konulardan birine tıkla.
-2. **"Yolu göster"e bas.** Pusula sana 3 adım gösterir:
-   - **Bunu kullan:** Hangi Claude özelliği veya skill'i işini görür.
-   - **Bunu bağla:** İşine yarayacak uygulama bağlantıları (Canva, Notion, Gmail…). Bu adım isteğe bağlı.
-   - **Claude'a bunu yaz:** Hazır bir prompt şablonu.
-3. **Sarı yerleri doldur.** `[köşeli parantez]` içindeki yerlere kendi bilgilerini yaz.
-4. **Kopyala ve Claude'a yapıştır.** Bu kadar.
+3. **"Yolu göster"e bas.** Pusula sana 3 adım gösterir:
+   - **Bunu kullan:** Seçtiğin yapay zekânın hangi özelliği işini görür (Canvas, Deep Research, skill'ler…).
+   - **Bunu bağla:** İşine yarayacak uygulama bağlantıları (Canva, Gmail, Notion…). Bu adım isteğe bağlı.
+   - **Bunu kopyalayıp yapıştır:** Hazır bir prompt şablonu.
+4. **Sarı yerleri doldur.** `[köşeli parantez]` içindeki yerlere kendi bilgilerini yaz.
+5. **Kopyala ve yapay zekâna yapıştır.** Bu kadar.
 
-> 💡 Sayfa claude.ai içinde açılırsa bir de **"Benim için doldur"** butonu çıkar. Boşlukları Claude senin hedefine göre kendisi doldurur.
+> 💡 Seçtiğin yapay zekâ o iş için uygun değilse (örneğin Codex ile sunum) Pusula sana uygun olanı önerir.
+>
+> 💡 Bağlantıyı belirli bir yapay zekâ seçili paylaşabilirsin: linkin sonuna `?ai=gemini` ekle (`claude`, `chatgpt`, `gemini`, `grok`, `codex`, `antigravity`).
+>
+> 💡 Sayfa claude.ai içinde açılırsa bir de **"Benim için doldur"** butonu çıkar ve boşlukları kendisi doldurur.
 
-### Şu an desteklenen konular
+### Desteklenen konular
 
-Animasyon · Sunum · Web sitesi / uygulama · Excel / tablo · Belge / CV / rapor · E-posta · Poster / logo / tasarım · Seslendirme · Araştırma · Ders çalışma · Kod / hata çözme · Online mağaza · Not / görev düzeni · Roblox oyunu
+Animasyon · Sunum · Web sitesi / uygulama · Excel / tablo · Belge / CV / rapor · E-posta · Poster / logo / görsel · Seslendirme · Araştırma · Ders çalışma · Kod / hata çözme · Online mağaza · Not / görev düzeni · Roblox oyunu
+
+Codex ve Antigravity kod araçları olduğu için sadece kodla ilgili konularda (web, kod, animasyon, Roblox, tablo/arayüz) çıkar.
 
 ---
 
-## Claude'u daha iyi kullanmak için püf noktaları
+## Hangi yapay zekâ ne için iyi?
 
-Pusulayı kullanmasan bile bu kurallar her prompt'u daha iyi yapar.
+| İş | En rahat seçenekler |
+|---|---|
+| Sunum, belge, CV | Claude, ChatGPT, Gemini |
+| Görsel / poster | ChatGPT, Gemini (Nano Banana), Grok Imagine |
+| Video | Gemini (Veo), Grok Imagine |
+| Gündem, son dakika | Grok (X gönderilerini de tarar) |
+| Uzun, kaynaklı araştırma | Claude Research, ChatGPT Deep Research, Gemini Deep Research |
+| Ders çalışma | Hepsi; Gemini'de NotebookLM ile kendi notlarından çalışabilirsin |
+| Küçük site / araç | Claude, ChatGPT Canvas, Gemini Canvas |
+| Gerçek yazılım projesi | Claude Code, Codex, Antigravity |
+
+---
+
+## Her yapay zekâ için kısa kullanım rehberi
+
+### Claude (Anthropic)
+- **Başla:** claude.ai'ye gir, hedefini yaz. Dosyalarını ataş simgesiyle ekle.
+- **Skill'ler:** Ayarlardan Excel, PowerPoint, GIF gibi skill'leri aç; Claude gerektiğinde kendisi kullanır.
+- **Bağlantılar:** Gmail, Google Drive, Notion, Canva gibi uygulamaları bağlarsan doğrudan oradaki bilgilerle çalışır.
+- **Projects:** Dosyalarını ve talimatlarını bir projede topla, her sohbette tekrar anlatma.
+- **Kod için:** Büyük projelerde Claude Code'u kullan.
+
+### ChatGPT (OpenAI)
+- **Canvas:** Uzun yazı ve kodda Canvas'ı aç, metni tek yerde birlikte düzeltin.
+- **Araştırma:** Güncel bilgi için web arama, uzun rapor için Deep Research.
+- **Dosyalar:** Excel, PDF, resim yükle; "`.xlsx` / `.pptx` / `.docx` olarak ver" diyerek dosya indir.
+- **Projects ve Tasks:** Projects ile işlerini topla, Tasks ile hatırlatıcı kur.
+- **Apps ve bağlantılar:** Canva gibi uygulamaları ChatGPT içinden kullan.
+- **Kod için:** Gerçek projelerde Codex'e geç.
+
+### Gemini (Google)
+- **Gems:** Sık yaptığın işler için kendi asistanını oluştur (ör. "YKS matematik koçu").
+- **Canvas:** Site, oyun ve uygulama prototipi; belgeleri Google Dokümanlar'a aktarabilirsin.
+- **Görsel ve video:** Nano Banana ile görsel üret ve düzenle; planında varsa Veo ile video.
+- **Deep Research ve NotebookLM:** Kaynaklı raporlar ve kendi notlarından çalışma.
+- **Google uygulamaları:** Gmail, Takvim, Drive bağlantısıyla kendi verinle çalışır.
+- **Kod için:** Gerçek projelerde Antigravity'yi kullan.
+
+### Grok (xAI)
+- **DeepSearch:** Hem web'i hem X'teki gönderileri tarar. Gündem için en güçlü seçenek.
+- **Think modu:** Zor soruları adım adım çözer. Önemli bilgileri yine de kontrol et.
+- **Grok Imagine:** Görsel ve sesli kısa video üretir.
+- **Projects:** Dosyalarını ve talimatlarını bir arada tut.
+- **Not:** Sunum gibi dosyaları kendisi üretmez; metni hazırlar, sen Gamma veya Canva'da sunuma çevirirsin.
+
+### Codex (OpenAI, kod ajanı)
+- **Nerede:** Codex uygulaması, IDE eklentisi (VS Code vb.), terminal (CLI) ve bulut.
+- **AGENTS.md:** Proje klasörüne bir `AGENTS.md` koy; kurallarını, test ve çalıştırma komutlarını yaz. Codex her seferinde okur.
+- **Onay modu:** Başta onay modunu açık tut ki komut çalıştırmadan önce sana sorsun.
+- **/review:** İş bitince değişiklikleri incelet.
+- **MCP:** GitHub, Figma gibi araçları bağlayabilirsin.
+
+### Antigravity (Google, kod ajanı)
+- **Agent Manager:** Görevleri ajanlara ver, birden fazlasını paralel çalıştır.
+- **Implementation Plan:** Ajan koda başlamadan plan yazar. Okumadan onaylama, yorum yazarak düzelt.
+- **Tarayıcı ajanı:** Web projelerinde ajandan siteyi tarayıcıda açıp test etmesini iste.
+- **Walkthrough:** İş bitince neyin değiştiğini ve ekran görüntülerini gösterir.
+
+---
+
+## Genel püf noktaları (hepsinde işe yarar)
 
 ### 1. Ne istediğini net söyle
 ❌ `bana sunum yap`
@@ -30,43 +97,40 @@ Pusulayı kullanmasan bile bu kurallar her prompt'u daha iyi yapar.
 Konu, kime yönelik olduğu, uzunluk ve format. Bu dördünü yazarsan sonuç bir anda düzelir.
 
 ### 2. Bir örnek göster
-Ne istediğini anlatmak zorsa örnek ver: *"Şu tarzda yaz: …"* ya da beğendiğin bir şeyin ekran görüntüsünü ekle. Claude örnekten çok hızlı öğrenir.
+Ne istediğini anlatmak zorsa örnek ver: *"Şu tarzda yaz: …"* ya da beğendiğin bir şeyin ekran görüntüsünü ekle.
 
 ### 3. Dosyanı doğrudan ekle
-PDF, Excel, Word, resim… Ataş simgesiyle yükle ve *"bunu özetle"*, *"bu tablodaki hatayı bul"* de. Metni kopyala-yapıştır yapmana gerek yok.
+PDF, Excel, Word, resim… Yükle ve *"bunu özetle"*, *"bu tablodaki hatayı bul"* de.
 
 ### 4. Önce taslak iste, sonra düzelt
-Tek seferde mükemmel sonuç beklemek yerine *"önce kısa bir taslak yap"* de. Sonra *"daha kısa olsun"*, *"renkleri koyulaştır"*, *"3. maddeyi değiştir"* gibi adım adım düzelt. Her seferinde baştan anlatmana gerek yok, Claude konuşmayı hatırlar.
+*"Önce kısa bir taslak yap"* de. Sonra *"daha kısa olsun"*, *"3. maddeyi değiştir"* gibi adım adım düzelt. Yapay zekâ konuşmayı hatırlar, baştan anlatmana gerek yok.
 
 ### 5. Eksik bilgi varsa sana sormasını iste
-Prompt'un sonuna *"Eksik bilgi varsa önce bana sor"* yaz. Claude yanlış tahmin yapmak yerine soru sorar.
+Prompt'un sonuna *"Eksik bilgi varsa önce bana sor"* yaz. Yanlış tahmin yerine soru sorar.
 
 ### 6. Rol ver
-*"Bir İK uzmanı gibi CV'mi incele"* ya da *"Bir matematik öğretmeni gibi adım adım anlat"*. Rol vermek cevabın tonunu ve derinliğini değiştirir.
+*"Bir İK uzmanı gibi CV'mi incele"* ya da *"Bir matematik öğretmeni gibi adım adım anlat"*.
 
 ### 7. Format belirt
-Tablo mu, madde listesi mi, kod mu, e-posta mı? Söylersen tam istediğin şekilde gelir. Örneğin: *"Cevabı karşılaştırma tablosu olarak ver."*
+Tablo mu, madde listesi mi, kod mu? *"Cevabı karşılaştırma tablosu olarak ver"* gibi.
 
-### 8. Uygulamalarını bağla
-Ayarlardaki bağlantılar (connector) bölümünden Gmail, Google Drive, Notion, Canva gibi uygulamaları bağlarsan Claude doğrudan oradaki bilgilerle çalışır. Örneğin *"gelen kutumdaki staj mailine cevap taslağı hazırla"* diyebilirsin. Önemli işlemlerden (mail göndermek gibi) önce Claude sana sorar.
+### 8. Güncel bilgi için arama yaptır
+Haberler, fiyatlar, sınav tarihleri için *"internette ara ve kaynak göster"* de.
 
-### 9. Skill'leri aç
-Skill'ler Claude'a belirli bir işi nasıl iyi yapacağını öğreten paketlerdir (Excel, PowerPoint, GIF, p5.js animasyonu…). Ayarlardan açabilirsin. Açık olanları Claude gerektiğinde kendisi kullanır.
+### 9. Her işe ayrı sohbet
+Konu değiştiğinde yeni sohbet aç. Daha temiz sonuç verir.
 
-### 10. Güncel bilgi için arama yaptır
-Haberler, fiyatlar, sınav tarihleri gibi değişen bilgiler için *"internette ara ve kaynak göster"* de. Kaynaklı cevap her zaman daha güvenilirdir.
+### 10. Kod ajanlarında önce plan
+Codex, Antigravity, Claude Code gibi ajanlara *"önce plan çıkar ve onayımı bekle"* de. Plan doğruysa kod da doğru gelir.
 
-### 11. Uzun konuşmaları böl
-Konu değiştiğinde yeni sohbet aç. Tek bir sohbette 10 farklı iş yapmak yerine her işe ayrı sohbet daha temiz sonuç verir.
-
-### 12. Kontrol et
-Claude çok iyi ama hatasız değil. Önemli bilgileri (tarihler, sayılar, kod) mutlaka kontrol et. *"Bu cevabı tekrar kontrol et, hata var mı?"* demek de işe yarar.
+### 11. Kontrol et
+Hiçbir yapay zekâ hatasız değil. Tarihleri, sayıları ve kodu mutlaka kontrol et. *"Bu cevabı tekrar kontrol et, hata var mı?"* demek de işe yarar.
 
 ---
 
 ## Kendi bilgisayarında çalıştırma
 
-Hiçbir kurulum gerekmez. Tek bir HTML dosyası:
+Kurulum gerekmez, tek bir HTML dosyası:
 
 ```bash
 git clone https://github.com/MustafaCanDere/claude-pusulasi.git
@@ -74,23 +138,29 @@ cd claude-pusulasi
 # index.html dosyasına çift tıkla, tarayıcıda açılır
 ```
 
-## Yeni konu ekleme (katkı)
+## Katkı: yeni konu veya yapay zekâ ekleme
 
-Tüm konular `index.html` içindeki `CATALOG` listesinde. Yeni bir konu eklemek için listeye şu yapıda bir öğe ekle:
+Her şey `index.html` içinde üç listede:
+
+- `AIS`: yapay zekâlar (ad, tür, püf noktaları)
+- `CATS`: konular (ad, anahtar kelimeler, ortak prompt)
+- `MAP`: her yapay zekâ için her konuda hangi özellik kullanılır
+
+Yeni bir konu için `CATS`'e ekle, sonra `MAP` içinde her yapay zekâya o konunun karşılığını yaz:
 
 ```js
-{
-  id: "video",                        // benzersiz kısa ad
-  label: "Video düzenleme",           // ekranda görünen ad
-  keys: ["video", "kurgu", "montaj"], // kullanıcı bunlardan birini yazarsa bu konu seçilir
-  why: "Bu konuda Claude'un ne yapabildiğinin kısa açıklaması.",
-  use: [["Araç adı", "Ne işe yaradığı"]],
-  connect: [["Uygulama adı", "Neden bağlanmalı"]],
-  prompt: "Hazır prompt. Doldurulacak yerleri [köşeli parantez] içine yaz."
+// MAP.gemini içine
+video: {
+  why: "Bu yapay zekâ bu işte ne yapabilir, kısaca.",
+  use: [["Özellik adı", "Ne işe yaradığı"]],
+  connect: [["Uygulama adı", "Neden bağlanmalı"]], // isteğe bağlı
+  add: "Prompt'un sonuna eklenecek satır"          // isteğe bağlı
 }
 ```
 
-Sonra bir Pull Request aç. Türkçe katkılar çok makbule geçer 🙌
+Bir yapay zekâ o işi yapamıyorsa o konuyu `MAP`'e hiç yazma; Pusula kullanıcıya otomatik olarak uygun olanı önerir.
+
+Özellikler hızlı değişiyor. Yanlış ya da eskimiş bir bilgi görürsen Issue ya da Pull Request aç 🙌
 
 ## Lisans
 
@@ -98,4 +168,4 @@ Sonra bir Pull Request aç. Türkçe katkılar çok makbule geçer 🙌
 
 ---
 
-*Claude Pusulası, Anthropic'in resmi bir ürünü değildir. Topluluk tarafından yapılmış bir yardımcı araçtır.*
+*AI Pusulası; Anthropic, OpenAI, Google veya xAI'nin resmi bir ürünü değildir. Topluluk tarafından yapılmış bir yardımcı araçtır.*
