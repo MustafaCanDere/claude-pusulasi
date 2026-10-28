@@ -1,13 +1,5 @@
 # 🧭 Claude Pusulası
 
-**Ne yapmak istediğini yaz, Claude'da hangi aracı kullanacağını ve ne yazacağını göstersin.**
-
-Claude çok şey yapabiliyor: animasyon, sunum, web sitesi, Excel, CV, seslendirme… Ama çoğu kişi hangi skill'i açacağını, hangi uygulamayı bağlayacağını ya da nasıl prompt yazacağını bilmiyor. Claude Pusulası bu boşluğu dolduruyor.
-
-👉 **Hemen dene:** https://mustafacandere.github.io/claude-pusulasi/
-
----
-
 ## Nasıl kullanılır?
 
 1. **Hedefini yaz.** Örneğin: `logomu döndüren bir animasyon`, `staj için CV`, `türev konusunu öğren`.
