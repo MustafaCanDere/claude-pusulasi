@@ -128,38 +128,6 @@ Hiçbir yapay zekâ hatasız değil. Tarihleri, sayıları ve kodu mutlaka kontr
 
 ---
 
-## Kendi bilgisayarında çalıştırma
-
-Kurulum gerekmez, tek bir HTML dosyası:
-
-```bash
-git clone https://github.com/MustafaCanDere/claude-pusulasi.git
-cd claude-pusulasi
-# index.html dosyasına çift tıkla, tarayıcıda açılır
-```
-
-## Katkı: yeni konu veya yapay zekâ ekleme
-
-Her şey `index.html` içinde üç listede:
-
-- `AIS`: yapay zekâlar (ad, tür, püf noktaları)
-- `CATS`: konular (ad, anahtar kelimeler, ortak prompt)
-- `MAP`: her yapay zekâ için her konuda hangi özellik kullanılır
-
-Yeni bir konu için `CATS`'e ekle, sonra `MAP` içinde her yapay zekâya o konunun karşılığını yaz:
-
-```js
-// MAP.gemini içine
-video: {
-  why: "Bu yapay zekâ bu işte ne yapabilir, kısaca.",
-  use: [["Özellik adı", "Ne işe yaradığı"]],
-  connect: [["Uygulama adı", "Neden bağlanmalı"]], // isteğe bağlı
-  add: "Prompt'un sonuna eklenecek satır"          // isteğe bağlı
-}
-```
-
-Bir yapay zekâ o işi yapamıyorsa o konuyu `MAP`'e hiç yazma; Pusula kullanıcıya otomatik olarak uygun olanı önerir.
-
 Özellikler hızlı değişiyor. Yanlış ya da eskimiş bir bilgi görürsen Issue ya da Pull Request aç 🙌
 
 ## Lisans
